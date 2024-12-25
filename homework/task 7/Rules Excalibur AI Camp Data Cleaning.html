@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Excalibur AI Camp Data Cleaning</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1585dd48-ac1d-80e8-a1d5-f0f79b13bc14" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">💽</span></div><h1 class="page-title"><strong>Excalibur AI Camp Data Cleaning</strong></h1><p class="page-description"></p></header><div class="page-body"><h3 id="1585dd48-ac1d-8165-82dd-f5e697048a2c" class=""><strong>Welcome to the Data Cleaning Challenge!</strong></h3><p id="1585dd48-ac1d-816b-9ba8-c50b5aff5766" class="">In this challenge, you’ll step into the shoes of a data engineer hired by an environmental research institute on marketing.</p><p id="1585dd48-ac1d-8148-8a5f-c329d6351396" class=""><strong>Your goal</strong>: Consolidate, clean, and standardize these datasets to create a unified, analysis-ready dataset. You’ll tackle issues such as mixed formats, duplicate entries, inconsistent units, and varying data frequencies.</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Overview</summary><div class="indented"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1585dd48-ac1d-8139-bb60-f1c92cb327b1"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%"><p id="1585dd48-ac1d-813e-a5a1-d97ba5b327f3" class=""><strong>Read this first:</strong> This data is intentionally messy! Reading this section will prepare you for what you’re about to encounter and give you a few <strong>tips</strong> to get started.</p></div></figure><p id="1585dd48-ac1d-81a0-b43b-e48e4c3319ab" class="">This dataset presents common real-world challenges in data cleaning. It includes:</p><ul id="1585dd48-ac1d-81bf-b3db-c877152285eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Multiple files</strong> in varying formats (<code>.csv</code>, <code>.tsv</code>, <code>.json</code>, etc.)</li></ul><ul id="1585dd48-ac1d-813a-a989-c3f3f1e6a01e" class="bulleted-list"><li style="list-style-type:disc"><strong>Inconsistent data types</strong> and <strong>column names</strong> across files</li></ul><ul id="1585dd48-ac1d-8115-ac97-c9fe5ffcc697" class="bulleted-list"><li style="list-style-type:disc"><strong>Different data frequencies</strong> (e.g., hourly, monthly)</li></ul><ul id="1585dd48-ac1d-8177-8d3c-f0e7a6621588" class="bulleted-list"><li style="list-style-type:disc"><strong>Duplicates</strong> and <strong>missing entries</strong></li></ul><ul id="1585dd48-ac1d-8157-8ad1-d10922058a3e" class="bulleted-list"><li style="list-style-type:disc"><em><strong>Much Much More</strong></em></li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1585dd48-ac1d-813b-8ca4-d6b9ce5a5b1a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="1585dd48-ac1d-81e8-81da-ea49ee6100c1" class=""><strong>Tip</strong>: To simulate a real-world scenario, start independently, just as you would with a client’s data. A guidance notebook is available if needed, but we encourage you to first explore and tackle the data on your own.</p></div></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Data</summary><div class="indented"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Dataset Description</summary><div class="indented"><p id="1585dd48-ac1d-8161-a2f0-c6c0efc45828" class="">This dataset contains customer, employee, product, and transaction data for a retail company, as well as sensor data from the company&#x27;s stores and error logs related to data processing. This challenge aims to work with the various data files, clean and preprocess the data, and build models to gain insights into the company&#x27;s operations.</p><h2 id="1585dd48-ac1d-8108-bc39-eeaadd55f923" class="">Files</h2><p id="1585dd48-ac1d-8152-9a4b-f95f0668804a" class="">The dataset includes the following files:</p><h3 id="1585dd48-ac1d-8157-b6e0-d201fbd36e67" class=""><code>customers.csv</code></h3><ul id="1585dd48-ac1d-81d8-b8ee-c5373263f5a0" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Information about the company&#x27;s customers, including personal details, contact information, and account history.</li></ul><ul id="1585dd48-ac1d-812d-a2a0-c5428b746172" class="bulleted-list"><li style="list-style-type:disc"><strong>Columns</strong>: <code>customer_id</code>, <code>name</code>, <code>birth_date</code>, <code>age</code>, <code>email</code>, <code>phone</code>, <code>address</code> (street, city, state, country, postal_code), <code>registration_date</code>, <code>last_login</code>, <code>status</code>, <code>language_preference</code>.</li></ul><h3 id="1585dd48-ac1d-8193-ab99-f5bd4970823e" class=""><code>employees.csv</code></h3><ul id="1585dd48-ac1d-819f-bf30-d9340a66a518" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Information about the company&#x27;s employees, such as personal details, job roles, and performance metrics.</li></ul><ul id="1585dd48-ac1d-8168-ad06-fe841d5fe6fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Columns</strong>: <code>employee_id</code>, <code>personal_info</code> (name, birth_date, age, salary, email, phone, address), <code>position</code>, <code>department</code>, <code>performance_metrics</code>.</li></ul><h3 id="1585dd48-ac1d-8117-8102-f452e3e10cfc" class=""><code>error_logs.csv</code></h3><ul id="1585dd48-ac1d-8133-a2ed-e7f42f094dab" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Records of various errors and issues that occurred during data processing and system operations.</li></ul><ul id="1585dd48-ac1d-8193-8d27-c4f398cabd90" class="bulleted-list"><li style="list-style-type:disc"><strong>Columns</strong>: <code>timestamp</code>, <code>error_type</code>, <code>message</code>.</li></ul><h3 id="1585dd48-ac1d-8112-8afc-c29eedc3713d" class=""><code>products.json</code></h3><ul id="1585dd48-ac1d-8195-86e0-fe06f30df891" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: The company&#x27;s product catalog, including details about each product.</li></ul><ul id="1585dd48-ac1d-8154-93ca-d2c1ea170c17" class="bulleted-list"><li style="list-style-type:disc"><strong>Fields</strong>: <code>product_id</code>, <code>name</code>, <code>category</code>, <code>description</code>, <code>specifications</code> (weight, dimensions, temperature_requirements), <code>price</code>, <code>stock_level</code>, <code>supplier_id</code>.</li></ul><h3 id="1585dd48-ac1d-81f4-aa23-ea2cf4a027d9" class=""><code>sensor_stores_transactions.zip</code></h3><ul id="1585dd48-ac1d-8149-a7ce-fc2ef1946432" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: A compressed folder containing three files related to the company&#x27;s stores and transactions.<ol type="1" id="1585dd48-ac1d-8182-af9b-dfb861fa61f7" class="numbered-list" start="1"><li><code>sensor_data.csv</code><ul id="1585dd48-ac1d-8153-b9ba-e9c60d6f48bf" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Sensor measurements from the company&#x27;s stores, including temperature, humidity, foot traffic, and energy consumption.</li></ul><ul id="1585dd48-ac1d-817d-a4c3-ec324cfa695f" class="bulleted-list"><li style="list-style-type:disc"><strong>Columns</strong>: <code>timestamp</code>, <code>store_id</code>, <code>sensor_id</code>, <code>temperature</code>, <code>humidity</code>, <code>foot_traffic</code>, <code>energy_consumption</code>.</li></ul></li></ol><ol type="1" id="1585dd48-ac1d-815a-8e2f-e7b8fc65e828" class="numbered-list" start="2"><li><code>stores.csv</code><ul id="1585dd48-ac1d-8176-ae4c-f7b5c149fa1d" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Information about the company&#x27;s store locations, including address, size, and performance metrics.</li></ul><ul id="1585dd48-ac1d-811a-bc80-e56da82ce784" class="bulleted-list"><li style="list-style-type:disc"><strong>Columns</strong>: <code>store_id</code>, <code>name</code>, <code>location</code> (coordinates, address), <code>size</code>, <code>opening_hours</code>, <code>manager_id</code>, <code>performance_metrics</code> (revenue, foot_traffic, conversion_rate).</li></ul></li></ol><ol type="1" id="1585dd48-ac1d-81a3-898a-c8a5b254da19" class="numbered-list" start="3"><li><code>transactions.csv</code><ul id="1585dd48-ac1d-816c-8e0f-cba1b8ab54cd" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Details about the company&#x27;s customer transactions, including the items purchased.</li></ul><ul id="1585dd48-ac1d-8179-ba3c-e9894038cc09" class="bulleted-list"><li style="list-style-type:disc"><strong>Columns</strong>: <code>transaction_id</code>, <code>customer_id</code>, <code>store_id</code>, <code>timestamp</code>, <code>items</code> (product_id, quantity, unit_price, discount), <code>total_amount</code>, <code>payment_method</code>, <code>loyalty_points</code>.</li></ul></li></ol></li></ul><h2 id="1585dd48-ac1d-81fe-b9bd-de0d0694d59d" class="">Data Characteristics</h2><ul id="1585dd48-ac1d-8198-a9ab-fead229584c3" class="bulleted-list"><li style="list-style-type:disc">The data contains a mix of structured (CSV, JSON) and semi-structured (CSV in a ZIP file) formats.</li></ul><ul id="1585dd48-ac1d-81ac-8d29-cb1106812d9b" class="bulleted-list"><li style="list-style-type:disc">There are various data quality and consistency issues, such as:<ul id="1585dd48-ac1d-8106-bc18-d64347478524" class="bulleted-list"><li style="list-style-type:circle">Inconsistent date and time formats</li></ul><ul id="1585dd48-ac1d-8143-bf8e-f2131433e6c9" class="bulleted-list"><li style="list-style-type:circle">Missing values represented in different ways (NULL, NA, -1, etc.)</li></ul><ul id="1585dd48-ac1d-81bc-85b1-cc093b7a9e7a" class="bulleted-list"><li style="list-style-type:circle">Ambiguous or contradictory information (e.g., age vs. birth date)</li></ul><ul id="1585dd48-ac1d-81b7-837a-e3f1bdf38dc1" class="bulleted-list"><li style="list-style-type:circle">Variations in units of measurement (metric vs. imperial)</li></ul><ul id="1585dd48-ac1d-8194-95ac-e268a70f955f" class="bulleted-list"><li style="list-style-type:circle">Inconsistent naming conventions and abbreviations</li></ul><ul id="1585dd48-ac1d-81d1-9486-c9199d402668" class="bulleted-list"><li style="list-style-type:circle">Potential outliers and erroneous data points</li></ul></li></ul><ul id="1585dd48-ac1d-813b-8387-da0baec7d746" class="bulleted-list"><li style="list-style-type:disc">The dataset spans multiple business domains, including customer data, product catalog, store operations, and transaction history.</li></ul><ul id="1585dd48-ac1d-8129-b3fa-e2088f124fa2" class="bulleted-list"><li style="list-style-type:disc">There are relationships between the different data files that participants should identify and leverage for analysis.</li></ul><ul id="1585dd48-ac1d-8146-be64-f00a46d92bbd" class="bulleted-list"><li style="list-style-type:disc">The error logs provide additional context about data quality issues that may have occurred.</li></ul><p id="1585dd48-ac1d-81ae-ae3e-e204d2febd15" class="">We hope this detailed description helps you get started with the challenge. Let us know if you have any other questions!</p><p id="1585dd48-ac1d-8195-b8dd-c24308cf6eb0" class="">
+</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Data Explorer</summary><div class="indented"><figure id="1585dd48-ac1d-8145-a5ff-c7535c48c4a5"><div class="source"><a href="https://drive.google.com/drive/folders/1cnkowQge1TvAocj_MAEIqxyG16JYrasu?usp=sharing">1cnkowQge1TvAocj_MAEIqxyG16JYrasu?usp=sharing</a></div></figure></div></details></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Output</summary><div class="indented"><p id="1585dd48-ac1d-8126-a123-f8fe7f96bd2b" class="">Two elements are expected from you in this homework:</p><ul id="1585dd48-ac1d-81bd-a892-e3c78a184212" class="bulleted-list"><li style="list-style-type:disc">Notebook in which you do the entire investigation process, where you showcase how did you find that you need to filter some fields, how did you decide on how to filter the things what tests did you do in the process. </li></ul><ul id="1585dd48-ac1d-810f-b710-e059474f8def" class="bulleted-list"><li style="list-style-type:disc">Script that takes as input the name of the folder in which all 5 files can be found, and that automatically cleans the data and takes care of everything. (This will be tested so make sure you also add instructions on how to run your script)</li></ul><p id="1585dd48-ac1d-81a8-837f-e65abaad44c2" class="">
+</p></div></details><p id="1585dd48-ac1d-81e1-8e7a-f4c5f1dfaa54" class="">
+</p><p id="1585dd48-ac1d-81ab-9493-e0b725e8e309" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

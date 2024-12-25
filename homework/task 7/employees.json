@@ -1,0 +1,481 @@
+[
+  {
+    "employee_id": "235150",
+    "personal_info": {
+      "name": "Katharina K\u00fchnert-Etzold",
+      "birth_date": "1960-08-03 01:00:00.000000",
+      "email": "patinoplacido@compania.com",
+      "phone": "(602) 9233209",
+      "address": {
+        "street": "Parque Luiza Moura STREET",
+        "building_number": "9/5",
+        "city": "Albacete",
+        "state": "BA",
+        "country": "USA",
+        "postal_code": "17833"
+      },
+      "salary": "86,183.91 USD"
+    },
+    "position": "Store Manager",
+    "department": "Retail/Store Operations",
+    "performance_metrics": {
+      "sales_target": "$739,902",
+      "customer_satisfaction": "0.9237139045768189",
+      "team_size": 23
+    }
+  },
+  {
+    "employee_id": "EMP_156173",
+    "personal_info": {
+      "name": "Corona Candela Rocamora Morcillo",
+      "birth_date": "yesterday",
+      "email": "guillaumepottier@example.org",
+      "phone": "275-698-4751",
+      "address": {
+        "line1": "17014 Miroslav-R\u00f6hricht-Platz street",
+        "line2": "Correia, ME. 94378",
+        "country": "U.S.A."
+      },
+      "salary": "$35.4K"
+    },
+    "position": "store_manager",
+    "department": "Retail/Store Operations",
+    "performance_metrics": {
+      "sales_target": "942K USD",
+      "customer_satisfaction": "4.5/5",
+      "team_size": 15
+    }
+  },
+  {
+    "employee_id": "EMP-d00777",
+    "personal_info": {
+      "name": "ELOY TENORIO-HARO",
+      "birth_date": "yesterday",
+      "email": "LUISAALBUQUERQUE@EXAMPLE.COM",
+      "phone": "+1-6392849062",
+      "address": {
+        "street": "Ch\u00e1cara Dom Correia street",
+        "building_number": "79",
+        "city": "L\u00fcbeck",
+        "state": "LU",
+        "country": "US",
+        "postal_code": "40093"
+      },
+      "salary": "$109,024.80"
+    },
+    "position": "Sr. Store Manager",
+    "department": "Store Ops",
+    "performance_metrics": {
+      "sales_target": "935942 dollars",
+      "customer_satisfaction": "0.9042546116394141",
+      "team_size": 15
+    }
+  },
+  {
+    "employee_id": "EMP_501425",
+    "personal_info": {
+      "name": "da Luz, Jade",
+      "birth_date": "1968-01-21T00:00:00",
+      "email": "nathjacquot@example.com",
+      "phone": "+34 875 685 131",
+      "address": {
+        "street": "Via Miniati St",
+        "building_number": "92",
+        "city": "Anacapri",
+        "state": "Nevada",
+        "country": "United States",
+        "postal_code": "26062-517"
+      },
+      "salary": "$81.5K"
+    },
+    "position": "STORE MANAGER",
+    "department": "Store Ops",
+    "performance_metrics": {
+      "sales_target": "$417,180",
+      "customer_satisfaction": "4.3/5",
+      "team_size": 18
+    }
+  },
+  {
+    "employee_id": "EMP_777010",
+    "personal_info": {
+      "name": "Rebeca Jesus",
+      "birth_date": "1977-04-26T00:00:00",
+      "email": "edas-neves@example.com",
+      "phone": "+1-1384300273",
+      "address": {
+        "street": "Alexis Ferry St.",
+        "building_number": "7",
+        "city": "Campeglio",
+        "state": "BA",
+        "country": "Estados Unidos",
+        "postal_code": "76318828"
+      },
+      "salary": "\u20ac99,187.30"
+    },
+    "position": "Senior Store Manager",
+    "department": "RETAIL_OPERATIONS",
+    "performance_metrics": {
+      "sales_target": "537K USD",
+      "customer_satisfaction": "3.6/5",
+      "team_size": 12
+    }
+  },
+  {
+    "employee_id": "EMP158060",
+    "personal_info": {
+      "name": "Srta. La\u00eds Lima",
+      "birth_date": "1995.10.09 00:00:00",
+      "email": "laureano17@conti.net",
+      "phone": "+34824247876",
+      "address": {
+        "line1": "781 avenue de Deschamps Street",
+        "line2": "Sainte C\u00e9cileboeuf, ME 08975",
+        "country": "USA"
+      },
+      "salary": "32,332.79 USD"
+    },
+    "position": "Sr. Store Manager",
+    "department": "Retail/Store Operations",
+    "performance_metrics": {
+      "sales_target": "651176 dollars",
+      "customer_satisfaction": "0.9367593523634741",
+      "team_size": 31
+    }
+  },
+  {
+    "employee_id": "EMP_848896",
+    "personal_info": {
+      "name": "Lisa Manacorda",
+      "birth_date": "1983.08.12 00:00:00",
+      "email": "IPRIEGO@EXAMPLE.ORG",
+      "phone": "(02312) 18914",
+      "address": {
+        "street": "Rua Yasmin Rezende Street",
+        "building_number": "2",
+        "city": "Valencia",
+        "state": "C\u00c1",
+        "country": "USA",
+        "postal_code": "01933"
+      },
+      "salary": "$62.4K"
+    },
+    "position": "store_manager",
+    "department": "Retail Operations/Store Management",
+    "performance_metrics": {
+      "sales_target": "956309 dollars",
+      "customer_satisfaction": "3.8/5",
+      "team_size": 32
+    }
+  },
+  {
+    "employee_id": "EMP-64c85d",
+    "personal_info": {
+      "name": "VICKIE RUSSELL",
+      "birth_date": "1991.02.06 00:00:00",
+      "email": "sophia14@costela.org",
+      "phone": "(094) 8878212",
+      "address": {
+        "line1": "4 Piazza Victoria Street",
+        "line2": "Ja\u00e9n, Valladolid 10707",
+        "country": "United States of America"
+      },
+      "salary": "$74,015.05"
+    },
+    "position": "Sr. Store Manager",
+    "department": "Retail/Store Operations",
+    "performance_metrics": {
+      "sales_target": "912K USD",
+      "customer_satisfaction": "3.9/5",
+      "team_size": 12
+    }
+  },
+  {
+    "employee_id": "757258-EMP",
+    "personal_info": {
+      "name": "Raffaele Schiaparelli",
+      "birth_date": "yesterday",
+      "email": "ana-juliacostela@example.org",
+      "phone": "(980) 5103878",
+      "address": {
+        "line1": "426 avenue Lacroix STREET",
+        "line2": "Illertissen, VI. 49450-197",
+        "country": "U.S.A."
+      },
+      "salary": "\u20ac41,254.74"
+    },
+    "position": "Store Manager",
+    "department": "Store Ops",
+    "performance_metrics": {
+      "sales_target": "586K USD",
+      "customer_satisfaction": "0.9180672913939719",
+      "team_size": 14
+    }
+  },
+  {
+    "employee_id": "EMP_741854",
+    "personal_info": {
+      "name": "CHANTAL THOMAS",
+      "birth_date": "1983.08.10 09:00:00",
+      "email": "celina16@pichon.com",
+      "phone": "+1-5224610784",
+      "address": {
+        "street": "boulevard de Perret street",
+        "building_number": "15",
+        "city": "Rivarolo Del Re",
+        "state": "North Dakota",
+        "country": "United States",
+        "postal_code": "36431"
+      },
+      "salary": "$107,369.70"
+    },
+    "position": "Store Manager",
+    "department": "Retail/Store Operations",
+    "performance_metrics": {
+      "sales_target": "889K USD",
+      "customer_satisfaction": "0.9931159531935639",
+      "team_size": 44
+    }
+  },
+  {
+    "employee_id": "EMP.901476",
+    "personal_info": {
+      "name": "Emilio Bellocchio-Zoppetto",
+      "birth_date": "1972-06-13 00:00:00",
+      "email": "miguel71@dias.br",
+      "phone": "(686) 0956781",
+      "address": {
+        "street": "Stretto Arsenio STREET",
+        "building_number": "5442",
+        "city": "Ourense",
+        "state": "AM.",
+        "country": "U.S.A.",
+        "postal_code": "82017"
+      },
+      "salary": "\u20ac84,518.69"
+    },
+    "position": "Store Mgr",
+    "department": "Store Operations Department",
+    "performance_metrics": {
+      "sales_target": "$357,492",
+      "customer_satisfaction": "92%",
+      "team_size": 8
+    }
+  },
+  {
+    "employee_id": "EMP517108",
+    "personal_info": {
+      "name": "Martin, Dana",
+      "birth_date": "1990-11-15 00:00:00",
+      "email": "MMERCATI@EXAMPLE.NET",
+      "phone": "(864) 5187137",
+      "address": {
+        "line1": "80 chemin Lecomte Street",
+        "line2": "Tarragona, VE. 40369",
+        "country": "United States of America"
+      },
+      "salary": "\u20ac33,769.26"
+    },
+    "position": "STORE MANAGER",
+    "department": "RETAIL_OPERATIONS",
+    "performance_metrics": {
+      "sales_target": "$291,475",
+      "customer_satisfaction": "0.9006467858957712",
+      "team_size": 36
+    }
+  },
+  {
+    "employee_id": "EMP_299174",
+    "personal_info": {
+      "name": "Martins, Miguela",
+      "birth_date": "08-18-1979 12:00 AM",
+      "email": "GOMESJULIA@EXAMPLE.NET",
+      "phone": "+1-8843373832",
+      "address": {
+        "street": "Calle Te\u00f3filo Chico St.",
+        "building_number": "7726",
+        "city": "Neustadt am R\u00fcbenberge",
+        "state": "Par\u00e1.",
+        "country": "US",
+        "postal_code": "02618"
+      },
+      "salary": "$109,351.65"
+    },
+    "position": "Sr. Store Manager",
+    "department": "Retail Operations/Store Management",
+    "performance_metrics": {
+      "sales_target": "245K USD",
+      "customer_satisfaction": "0.9528845113223424",
+      "team_size": 26
+    }
+  },
+  {
+    "employee_id": "EMP-802bd7",
+    "personal_info": {
+      "name": "Sr. Luiz Fernando Machado",
+      "birth_date": "01-01-1990 12:00 AM",
+      "email": "pinedachelsea@example.org",
+      "phone": "+1-5138726664",
+      "address": {
+        "street": "chemin \u00c9lisabeth Marchand St.",
+        "building_number": "92",
+        "city": "Baleares",
+        "state": "PA.",
+        "country": "Estados Unidos",
+        "postal_code": "37894"
+      },
+      "salary": "$62.0K"
+    },
+    "position": "Store Mgr",
+    "department": "Retail Operations/Store Management",
+    "performance_metrics": {
+      "sales_target": "316207 dollars",
+      "customer_satisfaction": "0.9094568891950336",
+      "team_size": 45
+    }
+  },
+  {
+    "employee_id": "152432-EMP",
+    "personal_info": {
+      "name": "Hunter, Valentim",
+      "birth_date": "last week",
+      "email": "SALESZOE@EXAMPLE.ORG",
+      "phone": "+1-2590064715",
+      "address": {
+        "street": "Campo Levi Pires street",
+        "building_number": "5",
+        "city": "Grafenau",
+        "state": "AL.",
+        "country": "U.S.A.",
+        "postal_code": "27179"
+      },
+      "salary": "115,756.27 USD"
+    },
+    "position": "Store Mgr",
+    "department": "Retail Operations/Store Management",
+    "performance_metrics": {
+      "sales_target": "380K USD",
+      "customer_satisfaction": "4.6/5",
+      "team_size": 36
+    }
+  },
+  {
+    "employee_id": "EMP136598",
+    "personal_info": {
+      "name": "Ing. Siglinde Weller",
+      "birth_date": "1959-11-29 00:00:00.000000",
+      "email": "TSCHENTSCHERCHRISTEL@EXAMPLE.ORG",
+      "phone": "(036) 1344944",
+      "address": {
+        "line1": "7 Gina-J\u00e4ntsch-Ring street",
+        "line2": "Bourgeois, Ja\u00e9n. 15023",
+        "country": "USA"
+      },
+      "salary": "33,473.20 USD"
+    },
+    "position": "Sr. Store Manager",
+    "department": "Store Ops",
+    "performance_metrics": {
+      "sales_target": "$105,107",
+      "customer_satisfaction": "4.6/5",
+      "team_size": 28
+    }
+  },
+  {
+    "employee_id": "EMP.186922",
+    "personal_info": {
+      "name": "Wood, V\u00e9ronique",
+      "birth_date": "1962-06-17 09:00:00",
+      "email": "david84@allen.biz",
+      "phone": "(624) 4863562",
+      "address": {
+        "line1": "57 \u00c1rea Guerra STREET",
+        "line2": "Sant'Antonio Valli, Pavia. 01574",
+        "country": "USA"
+      },
+      "salary": "\u20ac67,119.83"
+    },
+    "position": "Store Manager",
+    "department": "RETAIL_OPERATIONS",
+    "performance_metrics": {
+      "sales_target": "193665 dollars",
+      "customer_satisfaction": "4.4/5",
+      "team_size": 26
+    }
+  },
+  {
+    "employee_id": "EMP_356291",
+    "personal_info": {
+      "name": "CIPRIANO RODRIGO-GORDILLO",
+      "birth_date": "1982-11-22T00:00:00",
+      "email": "vandreotti@scarponi-cendron.com",
+      "phone": "+55 (084) 3874 1165",
+      "address": {
+        "street": "Angela-Schmiedecke-Gasse street",
+        "building_number": "1",
+        "city": "Sanchez-sur-Vasseur",
+        "state": "ID",
+        "country": "U.S.A.",
+        "postal_code": "61297"
+      },
+      "salary": "93,834.95 USD"
+    },
+    "position": "STORE MANAGER",
+    "department": "Retail Operations/Store Management",
+    "performance_metrics": {
+      "sales_target": "$574,037",
+      "customer_satisfaction": "93%",
+      "team_size": 22
+    }
+  },
+  {
+    "employee_id": "EMP_888773",
+    "personal_info": {
+      "name": "Launay, Olivie",
+      "birth_date": "1992-12-17 00:00:00",
+      "email": "lucianalopez@hermanos.es",
+      "phone": "+1-9698813665",
+      "address": {
+        "street": "Ladeckplatz Street",
+        "building_number": "727",
+        "city": "Teresaland",
+        "state": "Parma",
+        "country": "Estados Unidos",
+        "postal_code": "13882"
+      },
+      "salary": "$81.0K"
+    },
+    "position": "STORE MANAGER",
+    "department": "Retail Operations/Store Management",
+    "performance_metrics": {
+      "sales_target": "331259 dollars",
+      "customer_satisfaction": "0.986064564362603",
+      "team_size": 13
+    }
+  },
+  {
+    "employee_id": "EMP-c256ac",
+    "personal_info": {
+      "name": "Tlustek, Daniel",
+      "birth_date": "1964-10-17 00:00:00.000000",
+      "email": "bettina41@example.org",
+      "phone": "001-583-696-0987x83683",
+      "address": {
+        "street": "Piazza Bianchi St.",
+        "building_number": "8350",
+        "city": "Foucher",
+        "state": "ES.",
+        "country": "United States of America",
+        "postal_code": "57029"
+      },
+      "salary": "$88,646.97"
+    },
+    "position": "Sr. Store Manager",
+    "department": "Store Ops",
+    "performance_metrics": {
+      "sales_target": "795K USD",
+      "customer_satisfaction": "0.8887956634492166",
+      "team_size": 43
+    }
+  }
+]
